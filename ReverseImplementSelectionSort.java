@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Objective:
  *
@@ -17,52 +20,56 @@ public class ReverseImplementSelectionSort {
 
         public static  void main(String[]args) {
             // Define an array of integers with its elements
-            int[] firstArray = {9,14,3,2,43,11,58,22,8,55,4,11};
+            List<Integer> numList = new ArrayList<>();
+            numList.addAll(List.of(9,14,3,2,43,11,58,22,8,55,4,11));
+
             System.out.println("Before Selection Sort");
-            prinArrayElement(firstArray);
+            prinArrayElement(numList);
             System.out.println();
-            selectionSort(firstArray); // Call the selectionSort method to sort the array
+            selectionSort(numList); // Call the selectionSort method to sort the array
             System.out.println("After  Selection Sorting Acending Order ");
-            prinArrayElement(firstArray);
+            prinArrayElement(numList);
             System.out.println();
-            selectionReversSort(firstArray); // Call the selectionReversSort method to sort the array revers mode or(decending order )
+            selectionReversSort(numList); // Call the selectionReversSort method to sort the array revers mode or(decending order )
             System.out.println("After  Selection Reverse Sorting ");
-            prinArrayElement(firstArray);
+            prinArrayElement(numList);
         }
-        public static  void selectionSort(int[] arr){
-            for(int i=0;i<arr.length-1;i++){
+        public static  void selectionSort(List<Integer> list){
+            for(int i=0;i<list.size()-1;i++){
                 int position=i;// Initialize the index or the position  of the minimum element
                 // find position of smallest num between (i + 1)th element and last element
-                for(int j=i+1;j<arr.length;j++){
-                    if(arr[j]<arr[position]){
+                for(int j=i+1;j<list.size();j++){
+                    if(list.get(j)<list.get(position)){
                         position=j;
                     }
                 }
-                // Swap smallerNum to current position on array
-                int smallerNum = arr[position];
-                arr[position] = arr[i];
-                arr[i] = smallerNum;
+                // Swap smallerNum to current position on array list
+                Integer smallerNum = list.get(position);
+                list.set(position, list.get(i));
+                list.set(i, smallerNum);
+
+
             }
 
         }
             //function of selection sort elements of array
-         public static  void selectionReversSort(int[] arr){
-                int n = arr.length;
-                for (int i = 0; i < n - 1; i++) {
-                    // Find the maximum element in the unsorted array
-                    int max_idx = i;
-                    for (int j = i + 1; j < n; j++) {
-                        if (arr[j] > arr[max_idx]) {
-                            max_idx = j;
-                        }
-                    }
-                    int temp = arr[max_idx];
-                    arr[max_idx] = arr[i];
-                    arr[i] = temp;
-                }
+         public static  void selectionReversSort(List<Integer> list){
+             int n = list.size();
+             for (int i = 0; i < n - 1; i++) {
+                 int maxIndex = i;
+                 for (int j = i + 1; j < n; j++) {
+                     if (list.get(j) > list.get(maxIndex)) {
+                         maxIndex = j;
+                     }
+                 }
+                 // Swap elements manually without using
+                 Integer maxNum= list.get(maxIndex);
+                 list.set(maxIndex, list.get(i));
+                 list.set(i, maxNum);
+             }
          }
-         public  static void prinArrayElement(int[] arr){
-             for(int i:arr){
+         public  static void prinArrayElement(List<Integer> list){
+             for(int i:list){
                  System.out.print(i+" ");
              }
          }
