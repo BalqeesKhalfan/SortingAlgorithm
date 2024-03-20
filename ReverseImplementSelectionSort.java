@@ -16,27 +16,18 @@
 public class ReverseImplementSelectionSort {
 
         public static  void main(String[]args) {
-
-                    // Define an array of integers with its elements
-                    int[] firstArray = {9,14,3,2,43,11,58,22,8,55,4,11};
-                    System.out.println("Before Selection Sort");
-                    for(int i:firstArray){
-                        System.out.print(i+" ");
-                    }
-                    System.out.println();
-                    selectionSort(firstArray); // Call the selectionSort method to sort the array
-                    System.out.println("After  Selection Sorting Acending Order ");
-                    for (int i:firstArray){
-                        System.out.print(i+" ");
-                    }
-
-                    System.out.println();
-
-                   selectionReversSort(firstArray); // Call the selectionReversSort method to sort the array revers mode or(decending order )
-                    System.out.println("After  Selection Reverse Sorting ");
-                    for (int i:firstArray){
-                        System.out.print(i+" ");
-                    }
+            // Define an array of integers with its elements
+            int[] firstArray = {9,14,3,2,43,11,58,22,8,55,4,11};
+            System.out.println("Before Selection Sort");
+            prinArrayElement(firstArray);
+            System.out.println();
+            selectionSort(firstArray); // Call the selectionSort method to sort the array
+            System.out.println("After  Selection Sorting Acending Order ");
+            prinArrayElement(firstArray);
+            System.out.println();
+            selectionReversSort(firstArray); // Call the selectionReversSort method to sort the array revers mode or(decending order )
+            System.out.println("After  Selection Reverse Sorting ");
+            prinArrayElement(firstArray);
         }
         public static  void selectionSort(int[] arr){
             for(int i=0;i<arr.length-1;i++){
@@ -69,6 +60,11 @@ public class ReverseImplementSelectionSort {
                     arr[max_idx] = arr[i];
                     arr[i] = temp;
                 }
+         }
+         public  static void prinArrayElement(int[] arr){
+             for(int i:arr){
+                 System.out.print(i+" ");
+             }
          }
 }
 
